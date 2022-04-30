@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const UserTable = (props) => {
+const UserTable = ({ users }) => {
   return (
     <table>
       <thead>
@@ -11,8 +12,8 @@ const UserTable = (props) => {
         </tr>
       </thead>
       <tbody>
-        {props.users.length > 0 ? (
-          props.users.map((user) => (
+        {users.length > 0 ? (
+          users.map((user) => (
             <tr key={user.id}>
               <td>{user.name}</td>
               <td>{user.username}</td>
@@ -31,5 +32,9 @@ const UserTable = (props) => {
     </table>
   );
 };
+
+UserTable.propTypes = {
+  users: PropTypes.array.isRequired,
+}
 
 export { UserTable };

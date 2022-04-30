@@ -30,7 +30,7 @@ function App() {
       <div className="flex-row">
         <div className="flex-large">
           <h2>Add user</h2>
-          <UserForm user={addUser} textButton={'Add user'}/>
+          <UserForm action={addUser} textButton='Add user'/>
         </div>
         <div className="flex-large">
           <h2>View users</h2>

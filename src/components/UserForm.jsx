@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 
-const UserForm = (props) => {
+const UserForm = ({ action, textButton }) => {
   const {
     register,
     handleSubmit,
@@ -10,7 +11,7 @@ const UserForm = (props) => {
   } = useForm();
 
   const onSubmit = (data, e) => {
-    props.user(data);
+    action(data);
     e.target.reset();
   };
 
@@ -25,6 +26,7 @@ const UserForm = (props) => {
         })}
       />
       <div>{errors?.name?.message}</div>
+
       <label>Username</label>
       <input
         type="text"
@@ -33,10 +35,15 @@ const UserForm = (props) => {
           required: { value: true, message: 'Required' },
         })}
       />
-      <div>{errors?.name?.message}</div>
-      <button>{props.textButton}</button>
+      <div>{errors?.username?.message}</div>
+      <button>{textButton}</button>
     </form>
   );
 };
+
+UserForm.propTypes = {
+  action: PropTypes.func.isRequired,
+  textButton: PropTypes.string.isRequired,
+}
 
 export { UserForm };
