@@ -1,13 +1,26 @@
-import React, { useId } from 'react';
+import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { UserForm } from '../components/UserForm';
 import { UserTable } from '../components/UserTable';
 import { useLocalStorage } from '../utils/useLocalStorage.js';
 
 function App() {
   const userData = [
-    { id: useId(), name: 'John Doe', username: 'jdoe' },
-    { id: useId(), name: 'Jane Doe', username: 'jdoe2' },
-    { id: useId(), name: 'John Smith', username: 'jsmith' },
+    {
+      id: uuidv4(),
+      name: 'John Doe',
+      username: 'jdoe',
+    },
+    {
+      id: uuidv4(),
+      name: 'Jane Doe',
+      username: 'jdoe2',
+    },
+    {
+      id: uuidv4(),
+      name: 'John Smith',
+      username: 'jsmith',
+    },
   ];
 
   // hook to use local storage
@@ -19,7 +32,7 @@ function App() {
   } = useLocalStorage('users', userData);
 
   const addUser = (user) => {
-    user.id = useId();
+    user.id = uuidv4();
     saveUsers([...users, user]);
   };
 
