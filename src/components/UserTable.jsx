@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const UserTable = ({ users, actionA }) => {
+const UserTable = ({ users, editRow, deleteUser }) => {
   return (
     <table>
       <thead>
@@ -18,11 +18,18 @@ const UserTable = ({ users, actionA }) => {
               <td>{user.name}</td>
               <td>{user.username}</td>
               <td>
-                <button className="button muted-button">Edit</button>{' '}
                 <button
                   className="button muted-button"
                   onClick={() => {
-                    actionA(user.id);
+                    editRow(user);
+                  }}
+                >
+                  Edit
+                </button>{' '}
+                <button
+                  className="button muted-button"
+                  onClick={() => {
+                    deleteUser(user.id);
                   }}
                 >
                   Delete
@@ -42,7 +49,8 @@ const UserTable = ({ users, actionA }) => {
 
 UserTable.propTypes = {
   users: PropTypes.array.isRequired,
-  actionA: PropTypes.func.isRequired,
+  editRow: PropTypes.func.isRequired,
+  deleteUser: PropTypes.func.isRequired,
 };
 
 export { UserTable };

@@ -1,5 +1,11 @@
 import React from 'react';
 
+/**
+ * LocalStorage hook
+ * @param {*} itemName
+ * @param {*} initialValue
+ * @returns Object
+ */
 function useLocalStorage(itemName, initialValue) {
   const [error, setError] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
