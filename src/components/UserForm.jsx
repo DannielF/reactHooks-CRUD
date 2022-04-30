@@ -1,17 +1,16 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 
-const UserForm = ({ action, textButton }) => {
+const UserForm = ({ actionForm, textButton }) => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data, e) => {
-    action(data);
+    actionForm(data);
     e.target.reset();
   };
 
@@ -42,8 +41,8 @@ const UserForm = ({ action, textButton }) => {
 };
 
 UserForm.propTypes = {
-  action: PropTypes.func.isRequired,
+  actionForm: PropTypes.func.isRequired,
   textButton: PropTypes.string.isRequired,
-}
+};
 
 export { UserForm };
